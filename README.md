@@ -13,9 +13,9 @@ Built as part of an internship assignment to demonstrate modern Android developm
   &nbsp;
   <img src="Myrequest_app.png" width="22%" alt="My Requests"/>
   &nbsp;
-  <img src="Profile#1_app.png" width="22%" alt="Profile"/>
+  <img src="Profile_1_app.png" width="22%" alt="Profile"/>
   &nbsp;
-  <img src="Profile#2_app.png" width="22%" alt="Settings"/>
+  <img src="Profile_2_app.png" width="22%" alt="Settings"/>
 </p>
 
 <p align="center">
