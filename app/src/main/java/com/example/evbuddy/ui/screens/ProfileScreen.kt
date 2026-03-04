@@ -8,6 +8,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.automirrored.filled.Help
+import androidx.compose.material.icons.automirrored.filled.Logout
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -45,10 +47,10 @@ fun ProfileScreen() {
                         .background(Color.White.copy(alpha = 0.25f), CircleShape),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text("JD", color = Color.White, fontWeight = FontWeight.ExtraBold, fontSize = 28.sp)
+                    Text("KT", color = Color.White, fontWeight = FontWeight.ExtraBold, fontSize = 28.sp)
                 }
                 Spacer(Modifier.height(12.dp))
-                Text("John Doe", color = Color.White, fontWeight = FontWeight.ExtraBold, fontSize = 20.sp)
+                Text("Kevin Tang", color = Color.White, fontWeight = FontWeight.ExtraBold, fontSize = 20.sp)
                 Text("EV Buddy Member · Gold Tier ⭐", color = Color.White.copy(alpha = 0.85f), fontSize = 13.sp)
             }
         }
@@ -100,7 +102,7 @@ fun ProfileScreen() {
         ProfileSection(title = "About") {
             ProfileMenuItem(Icons.Filled.Info, "App Version 1.0.0", Color(0xFF607D8B))
             ProfileMenuItem(Icons.Filled.Policy, "Privacy Policy", EVBlue)
-            ProfileMenuItem(Icons.Filled.Help, "Help & Support", EVGreen)
+            ProfileMenuItem(Icons.AutoMirrored.Filled.Help, "Help & Support", EVGreen)
         }
 
         Spacer(Modifier.height(16.dp))
@@ -114,7 +116,7 @@ fun ProfileScreen() {
             shape = RoundedCornerShape(14.dp),
             colors = ButtonDefaults.outlinedButtonColors(contentColor = Color(0xFFE53935))
         ) {
-            Icon(Icons.Filled.Logout, null, modifier = Modifier.size(18.dp))
+            Icon(Icons.AutoMirrored.Filled.Logout, null, modifier = Modifier.size(18.dp))
             Spacer(Modifier.width(8.dp))
             Text("Sign Out", fontWeight = FontWeight.SemiBold)
         }

@@ -24,15 +24,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.google.android.gms.maps.model.CameraPosition
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.BitmapDescriptorFactory
-import com.google.maps.android.compose.GoogleMap
-import com.google.maps.android.compose.Marker
-import com.google.maps.android.compose.MarkerState
-import com.google.maps.android.compose.rememberCameraPositionState
-import com.google.maps.android.compose.MapUiSettings
-import com.google.maps.android.compose.MapProperties
+import androidx.compose.ui.viewinterop.AndroidView
 import com.example.evbuddy.EVBuddyViewModel
 import com.example.evbuddy.data.FixedCharger
 import com.example.evbuddy.data.MobileDriver
@@ -161,7 +153,7 @@ fun EVBuddyHeader() {
                             .background(Color.White.copy(alpha = 0.3f), CircleShape),
                         contentAlignment = Alignment.Center
                     ) {
-                        Text("JD", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 13.sp)
+                        Text("KT", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 13.sp)
                     }
                 }
             }
@@ -285,23 +277,17 @@ fun ActionCard(
     }
 }
 
-// ── Google Map ────────────────────────────────────────────────────────────────
+// ── OSMDroid Map (OpenStreetMap - no API key needed) ─────────────────────────
 
 @Composable
 fun MapPlaceholder() {
-    // Tọa độ trung tâm HCMC
-    val hoChiMinh = LatLng(10.7769, 106.7009)
-
-    // Mock vị trí các trạm sạc
-    val chargerLocations = listOf(
-        LatLng(10.7769, 106.7009) to "EV Station - Quan 1",
-        LatLng(10.7800, 106.6950) to "VinFast Charging Hub",
-        LatLng(10.7700, 106.7100) to "Aeon Mall Charger"
+    // Danh sách trạm sạc mock tại HCMC
+    data class ChargerPoint(val lat: Double, val lng: Double, val name: String)
+    val chargerPoints = listOf(
+        ChargerPoint(10.7769, 106.7009, "EV Station - Quan 1"),
+        ChargerPoint(10.7800, 106.6950, "VinFast Charging Hub"),
+        ChargerPoint(10.7700, 106.7100, "Aeon Mall Charger")
     )
-
-    val cameraPositionState = rememberCameraPositionState {
-        position = CameraPosition.fromLatLngZoom(hoChiMinh, 13f)
-    }
 
     Card(
         modifier = Modifier
@@ -311,29 +297,41 @@ fun MapPlaceholder() {
         shape = RoundedCornerShape(18.dp),
         elevation = CardDefaults.cardElevation(2.dp)
     ) {
-        GoogleMap(
+        AndroidView(
             modifier = Modifier.fillMaxSize(),
-            cameraPositionState = cameraPositionState,
-            uiSettings = MapUiSettings(
-                zoomControlsEnabled = false,
-                myLocationButtonEnabled = false
-            ),
-            properties = MapProperties(
-                isMyLocationEnabled = false
-            )
-        ) {
-            // Vẽ marker cho từng trạm sạc
-            chargerLocations.forEach { (location, title) ->
-                Marker(
-                    state = MarkerState(position = location),
-                    title = title,
-                    snippet = "Tap to view details",
-                    icon = BitmapDescriptorFactory.defaultMarker(
-                        BitmapDescriptorFactory.HUE_GREEN
+            factory = { ctx ->
+                // Cấu hình OSMDroid
+                org.osmdroid.config.Configuration.getInstance().userAgentValue = ctx.packageName
+
+                // Tạo MapView
+                val mapView = org.osmdroid.views.MapView(ctx)
+                mapView.setTileSource(org.osmdroid.tileprovider.tilesource.TileSourceFactory.MAPNIK)
+                mapView.setMultiTouchControls(true)
+
+                // Set vị trí và zoom về HCMC
+                val centerPoint = org.osmdroid.util.GeoPoint(10.7769, 106.7009)
+                mapView.controller.setZoom(13.0)
+                mapView.controller.setCenter(centerPoint)
+
+                // Thêm marker cho từng trạm sạc
+                chargerPoints.forEach { charger ->
+                    val marker = org.osmdroid.views.overlay.Marker(mapView)
+                    marker.position = org.osmdroid.util.GeoPoint(charger.lat, charger.lng)
+                    marker.setAnchor(
+                        org.osmdroid.views.overlay.Marker.ANCHOR_CENTER,
+                        org.osmdroid.views.overlay.Marker.ANCHOR_BOTTOM
                     )
-                )
+                    marker.title = charger.name
+                    marker.snippet = "EV Charging Station"
+                    mapView.overlays.add(marker)
+                }
+
+                mapView
+            },
+            update = { mapView ->
+                mapView.onResume()
             }
-        }
+        )
     }
 }
 
