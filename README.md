@@ -1,27 +1,56 @@
-⚡ EV Buddy App
-EV Buddy is a peer-to-peer electric vehicle charging platform that connects
-EV drivers with nearby fixed charging stations or mobile power providers
-(V2V charging on demand).
-Built as part of an internship assignment to demonstrate modern Android
-development skills using Kotlin and Jetpack Compose.
+# ⚡ EV Buddy App
 
-📱 Screenshots
-HomeMy RequestsProfileSettingsShow ImageShow ImageShow ImageShow Image
+**EV Buddy** is a peer-to-peer electric vehicle charging platform that connects EV drivers with nearby fixed charging stations or mobile power providers (V2V charging on demand).
 
-🚀 Features
+Built as part of an internship assignment to demonstrate modern Android development skills using **Kotlin** and **Jetpack Compose**.
 
-🔍 Find nearby fixed charging stations with real-time port availability
-🚗 Request a mobile power driver for on-demand V2V charging
-📍 Interactive map view with charger pin locations
-⚡ Live battery & range status display
-📋 Charging history & request tracking
-👤 User profile with vehicle and payment management
+---
 
+## 📱 Screenshots
 
-🛠️ Tech Stack
-LanguageKotlinUI FrameworkJetpack Compose + Material 3ArchitectureMVVM (ViewModel + StateFlow)NavigationNavigation ComposeMin SDKAPI 24 (Android 7.0)Target SDKAPI 36
+<p align="center">
+  <img src="screenshots/home.png" width="22%" alt="Home Screen"/>
+  &nbsp;
+  <img src="screenshots/my_requests.png" width="22%" alt="My Requests"/>
+  &nbsp;
+  <img src="screenshots/profile.png" width="22%" alt="Profile"/>
+  &nbsp;
+  <img src="screenshots/profile_settings.png" width="22%" alt="Settings"/>
+</p>
 
-📁 Project Structure
+<p align="center">
+  <em>Home &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; My Requests &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Profile &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Settings</em>
+</p>
+
+---
+
+## 🚀 Features
+
+- 🔍 Find nearby **fixed charging stations** with real-time port availability
+- 🚗 Request a **mobile power driver** for on-demand V2V charging
+- 📍 Interactive map view with charger pin locations
+- ⚡ Live battery & range status display
+- 📋 Charging history & request tracking
+- 👤 User profile with vehicle and payment management
+
+---
+
+## 🛠️ Tech Stack
+
+| | |
+|---|---|
+| Language | Kotlin |
+| UI Framework | Jetpack Compose + Material 3 |
+| Architecture | MVVM (ViewModel + StateFlow) |
+| Navigation | Navigation Compose |
+| Min SDK | API 24 (Android 7.0) |
+| Target SDK | API 36 |
+
+---
+
+## 📁 Project Structure
+
+```
 com.example.evbuddy/
 ├── MainActivity.kt              # App entry point + navigation
 ├── EVBuddyViewModel.kt          # State management (StateFlow)
@@ -35,15 +64,20 @@ com.example.evbuddy/
         ├── HomeScreen.kt        # Main screen
         ├── MyRequestsScreen.kt  # Charging history
         └── ProfileScreen.kt     # User profile
+```
 
-🔧 How to Run
+---
 
-Clone this repository
-Open in Android Studio
-Wait for Gradle sync to complete
-Press Run ▶ or Shift + F10
-Select an emulator or connected device
+## 🔧 How to Run
 
+1. Clone this repository
+2. Open in **Android Studio**
+3. Wait for Gradle sync to complete
+4. Press **Run ▶** or `Shift + F10`
+5. Select an emulator or connected device
 
-👨‍💻 Author
-Kevin Tang — EV Buddy Internship Assignment
+---
+
+## 👨‍💻 Author
+
+**Kevin Tang** — EV Buddy Internship Assignment
