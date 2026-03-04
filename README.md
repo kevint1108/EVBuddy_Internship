@@ -9,13 +9,13 @@ Built as part of an internship assignment to demonstrate modern Android developm
 ## 📱 Screenshots
 
 <p align="center">
-  <img src="Homescreen_EVBuddy_App.png" width="22%" alt="Home Screen"/>
+  <img src="Homescreen_app.png" width="22%" alt="Home Screen"/>
   &nbsp;
-  <img src="My_Request_screen.png" width="22%" alt="My Requests"/>
+  <img src="Myrequest_app.png" width="22%" alt="My Requests"/>
   &nbsp;
-  <img src="Profile_#1_screen_EVBuddy.png" width="22%" alt="Profile"/>
+  <img src="Profile_1_app.png" width="22%" alt="Profile"/>
   &nbsp;
-  <img src="Profile_#2_screen_EVBuddy.png" width="22%" alt="Settings"/>
+  <img src="Profile_2_app.png" width="22%" alt="Settings"/>
 </p>
 
 <p align="center">
@@ -28,7 +28,7 @@ Built as part of an internship assignment to demonstrate modern Android developm
 
 - 🔍 Find nearby **fixed charging stations** with real-time port availability
 - 🚗 Request a **mobile power driver** for on-demand V2V charging
-- 📍 Interactive map view with charger pin locations
+- 🗺️ Interactive map view powered by **OpenStreetMap** (no API key required)
 - ⚡ Live battery & range status display
 - 📋 Charging history & request tracking
 - 👤 User profile with vehicle and payment management
@@ -43,6 +43,7 @@ Built as part of an internship assignment to demonstrate modern Android developm
 | UI Framework | Jetpack Compose + Material 3 |
 | Architecture | MVVM (ViewModel + StateFlow) |
 | Navigation | Navigation Compose |
+| Map | OSMDroid (OpenStreetMap) |
 | Min SDK | API 24 (Android 7.0) |
 | Target SDK | API 36 |
 
@@ -61,9 +62,9 @@ com.example.evbuddy/
     ├── theme/
     │   └── Color.kt             # Brand colors
     └── screens/
-        ├── HomeScreen.kt        # Main screen
+        ├── HomeScreen.kt        # Main screen + OSMDroid map
         ├── MyRequestsScreen.kt  # Charging history
-        └── ProfileScreen.kt     # User profile
+        └── ProfileScreen.kt     # User profile & settings
 ```
 
 ---
@@ -75,6 +76,8 @@ com.example.evbuddy/
 3. Wait for Gradle sync to complete
 4. Press **Run ▶** or `Shift + F10`
 5. Select an emulator or connected device
+
+> ✅ No API key needed — map uses OpenStreetMap (free & open source)
 
 ---
 
