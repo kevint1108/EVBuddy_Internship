@@ -45,10 +45,10 @@ fun ProfileScreen() {
                         .background(Color.White.copy(alpha = 0.25f), CircleShape),
                     contentAlignment = Alignment.Center
                 ) {
-                    Text("KT", color = Color.White, fontWeight = FontWeight.ExtraBold, fontSize = 28.sp)
+                    Text("JD", color = Color.White, fontWeight = FontWeight.ExtraBold, fontSize = 28.sp)
                 }
                 Spacer(Modifier.height(12.dp))
-                Text("Kevin Tang", color = Color.White, fontWeight = FontWeight.ExtraBold, fontSize = 20.sp)
+                Text("John Doe", color = Color.White, fontWeight = FontWeight.ExtraBold, fontSize = 20.sp)
                 Text("EV Buddy Member · Gold Tier ⭐", color = Color.White.copy(alpha = 0.85f), fontSize = 13.sp)
             }
         }

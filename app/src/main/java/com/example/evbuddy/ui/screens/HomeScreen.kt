@@ -24,6 +24,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.google.android.gms.maps.model.CameraPosition
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.maps.android.compose.GoogleMap
+import com.google.maps.android.compose.Marker
+import com.google.maps.android.compose.MarkerState
+import com.google.maps.android.compose.rememberCameraPositionState
+import com.google.maps.android.compose.MapUiSettings
+import com.google.maps.android.compose.MapProperties
 import com.example.evbuddy.EVBuddyViewModel
 import com.example.evbuddy.data.FixedCharger
 import com.example.evbuddy.data.MobileDriver
@@ -276,79 +285,55 @@ fun ActionCard(
     }
 }
 
-// ── Map Placeholder ───────────────────────────────────────────────────────────
+// ── Google Map ────────────────────────────────────────────────────────────────
 
 @Composable
 fun MapPlaceholder() {
+    // Tọa độ trung tâm HCMC
+    val hoChiMinh = LatLng(10.7769, 106.7009)
+
+    // Mock vị trí các trạm sạc
+    val chargerLocations = listOf(
+        LatLng(10.7769, 106.7009) to "EV Station - Quan 1",
+        LatLng(10.7800, 106.6950) to "VinFast Charging Hub",
+        LatLng(10.7700, 106.7100) to "Aeon Mall Charger"
+    )
+
+    val cameraPositionState = rememberCameraPositionState {
+        position = CameraPosition.fromLatLngZoom(hoChiMinh, 13f)
+    }
+
     Card(
         modifier = Modifier
             .fillMaxWidth()
             .height(220.dp)
             .padding(horizontal = 16.dp),
         shape = RoundedCornerShape(18.dp),
-        elevation = CardDefaults.cardElevation(2.dp),
-        colors = CardDefaults.cardColors(containerColor = Color(0xFFE8F5E9))
+        elevation = CardDefaults.cardElevation(2.dp)
     ) {
-        Box(modifier = Modifier.fillMaxSize()) {
-            // Fake grid lines
-            Column(modifier = Modifier.fillMaxSize()) {
-                repeat(5) {
-                    HorizontalDivider(
-                        color = Color(0xFFCCE5CC),
-                        thickness = 0.5.dp,
-                        modifier = Modifier.padding(vertical = 18.dp)
+        GoogleMap(
+            modifier = Modifier.fillMaxSize(),
+            cameraPositionState = cameraPositionState,
+            uiSettings = MapUiSettings(
+                zoomControlsEnabled = false,
+                myLocationButtonEnabled = false
+            ),
+            properties = MapProperties(
+                isMyLocationEnabled = false
+            )
+        ) {
+            // Vẽ marker cho từng trạm sạc
+            chargerLocations.forEach { (location, title) ->
+                Marker(
+                    state = MarkerState(position = location),
+                    title = title,
+                    snippet = "Tap to view details",
+                    icon = BitmapDescriptorFactory.defaultMarker(
+                        BitmapDescriptorFactory.HUE_GREEN
                     )
-                }
-            }
-
-            // Center content
-            Column(
-                modifier = Modifier.fillMaxSize(),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Box(
-                    modifier = Modifier
-                        .size(56.dp)
-                        .background(EVGreen.copy(alpha = 0.15f), CircleShape)
-                        .border(2.dp, EVGreen, CircleShape),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Icon(Icons.Filled.MyLocation, null, tint = EVGreen, modifier = Modifier.size(28.dp))
-                }
-                Spacer(Modifier.height(8.dp))
-                Text("Map View", color = EVGreenDark, fontWeight = FontWeight.SemiBold, fontSize = 14.sp)
-                Text(
-                    "Google/Apple Maps SDK goes here",
-                    color = Color(0xFF4CAF50).copy(alpha = 0.7f),
-                    fontSize = 11.sp
                 )
             }
-
-            // Mock charger pins
-            ChargerPin(Modifier.align(Alignment.TopStart).offset(48.dp, 40.dp))
-            ChargerPin(Modifier.align(Alignment.TopEnd).offset((-60).dp, 60.dp))
-            ChargerPin(Modifier.align(Alignment.BottomStart).offset(90.dp, (-30).dp))
         }
-    }
-}
-
-@Composable
-fun ChargerPin(modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier
-            .size(28.dp)
-            .background(
-                EVBlue.copy(alpha = 0.9f),
-                RoundedCornerShape(topStart = 14.dp, topEnd = 14.dp, bottomEnd = 14.dp)
-            )
-            .border(
-                1.5.dp, Color.White,
-                RoundedCornerShape(topStart = 14.dp, topEnd = 14.dp, bottomEnd = 14.dp)
-            ),
-        contentAlignment = Alignment.Center
-    ) {
-        Icon(Icons.Filled.Bolt, null, tint = Color.White, modifier = Modifier.size(14.dp))
     }
 }
 
