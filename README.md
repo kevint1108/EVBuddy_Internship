@@ -9,13 +9,13 @@ Built as part of an internship assignment to demonstrate modern Android developm
 ## 📱 Screenshots
 
 <p align="center">
-  <img src="screenshots/home.png" width="22%" alt="Home Screen"/>
+  <img src="Homescreen_EVBuddy_App.png" width="22%" alt="Home Screen"/>
   &nbsp;
-  <img src="screenshots/my_requests.png" width="22%" alt="My Requests"/>
+  <img src="My_Request_screen.png" width="22%" alt="My Requests"/>
   &nbsp;
-  <img src="screenshots/profile.png" width="22%" alt="Profile"/>
+  <img src="Profile_#1_screen_EVBuddy.png" width="22%" alt="Profile"/>
   &nbsp;
-  <img src="screenshots/profile_settings.png" width="22%" alt="Settings"/>
+  <img src="Profile_#2_screen_EVBuddy.png" width="22%" alt="Settings"/>
 </p>
 
 <p align="center">
