@@ -11,7 +11,7 @@ Built as part of an internship assignment to demonstrate modern Android developm
 <p align="center">
   <img src="Homescreen EVBuddy App.png" width="22%" alt="Home Screen"/>
   &nbsp;
-  <img src="My Request screen.png" width="22%" alt="My Requests"/>
+  <img src="My_request_screen_EVBuddy_app.png" width="22%" alt="My Requests"/>
   &nbsp;
   <img src="Profile #1 screen EVBuddy.png" width="22%" alt="Profile"/>
   &nbsp;
