@@ -1,4 +1,4 @@
-# ⚡ EV Buddy App
+# ⚡ Electric Vehicle App
 
 **EV Buddy** is a peer-to-peer electric vehicle charging platform that connects EV drivers with nearby fixed charging stations or mobile power providers (V2V charging on demand).
 
