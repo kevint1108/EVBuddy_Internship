@@ -9,13 +9,11 @@ Built as part of an internship assignment to demonstrate modern Android developm
 ## 📱 Screenshots
 
 <p align="center">
-  <img src="Homescreen_app.png" width="22%" alt="Home Screen"/>
-  &nbsp;
-  <img src="Myrequest_app.png" width="22%" alt="My Requests"/>
-  &nbsp;
-  <img src="Profile_1_app.png" width="22%" alt="Profile"/>
-  &nbsp;
-  <img src="Profile_2_app.png" width="22%" alt="Settings"/>
+ <img width="322" height="542" alt="Screenshot 2026-03-04 153735" src="https://github.com/user-attachments/assets/14884a62-5a5c-47fe-bbcd-753cc44d2275" />
+<img width="328" height="738" alt="Screenshot 2026-03-04 153707" src="https://github.com/user-attachments/assets/34b63064-2c6d-4ff4-b579-5cc1ccbe524d" />
+<img width="329" height="736" alt="Screenshot 2026-03-04 153643" src="https://github.com/user-attachments/assets/5c901f9c-33b2-4ef7-a915-2aa9fd587eb5" />
+<img width="332" height="735" alt="Screenshot 2026-03-04 153612" src="https://github.com/user-attachments/assets/7b80d3e4-84b9-4d0f-af6b-d4a44f81dfc6" />
+
 </p>
 
 <p align="center">
